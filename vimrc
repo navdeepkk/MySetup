@@ -17,6 +17,12 @@ autocmd VimEnter * wincmd p
 " Close VIM if nerdtree is the only window left open.
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+"---------------------------------------------------------config for easytags
+let g:easytags_async = 1	    " update ctags asynchronusly 
+
+"-------------------------------------------------------config for auto-pairs
+let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`', '<':'>'}
+
 " General
 set number	" Show line numbers
 set linebreak	" Break lines at word (requires Wrap lines)
