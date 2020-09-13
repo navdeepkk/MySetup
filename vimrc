@@ -1,6 +1,8 @@
+set nocompatible
 execute pathogen#infect()
 syntax on
 filetype plugin indent on	       "Filetype detection and indent enabled
+
 " -------------------------------------------------------All fav colorschemes
 "set background=dark
 "colorscheme one
@@ -18,7 +20,7 @@ set tags=$HOME/.vim/tags/tags
 "--------------------------------------------------------------config for ycm
 let g:ycm_clangd_binary_path = "/home/navdeep/Downloads/clangd/clangd-linux-10.0.0/clangd_10.0.0/bin"
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
-"let g:ycm_max_diagnostics_to_display = 0 
+let g:ycm_max_diagnostics_to_display = 0 
 "TO DISABLE YCM
 "let g:loaded_youcompleteme = 1
 
@@ -43,17 +45,19 @@ let g:cpp_experimental_template_highlight = 1
 let g:cpp_concepts_highlight = 1
 let g:cpp_posix_standard = 1
 let g:cpp_class_decl_highlight = 1
-"let g:cpp_member_variable_highlight = 1
+let g:cpp_member_variable_highlight = 1
 let g:cpp_class_scope_highlight = 1
 let g:cpp_no_function_highlight = 1
 
 "-------------------------------------------------------config for auto-pairs
-let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`', '<':'>'}
+let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`'}
 
 " General
+set path+=**		" Append to path for fuzzy finding
+set wildmenu		" Wildmenu for fuzzy finding
 set number		" Show line numbers
 set linebreak		" Break lines at word (requires Wrap lines)
-set textwidth=100	" Line wrap (number of cols)
+set textwidth=80	" Line wrap (number of cols)
 set showmatch		" Highlight matching brace
 
 set hlsearch		" Highlight all search results
@@ -66,8 +70,13 @@ set shiftwidth=2	" Number of auto-indent spaces
 set smartindent		" Enable smart-indent
 set smarttab		" Enable smart-tabs
 set softtabstop=2	" Number of spaces per Tab
+set updatetime=100	" Update early for gitGutter
 set shortmess-=S
 set showcmd
+set foldmethod=indent   
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
 
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>
