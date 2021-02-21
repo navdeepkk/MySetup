@@ -1,0 +1,106 @@
+set nocompatible
+execute pathogen#infect()
+syntax on
+filetype plugin indent on	       "Filetype detection and indent enabled
+
+"--------------------------------------------------------All fav colorschemes
+"set background=dark
+"colorscheme one
+"colorscheme PaperColor
+"colorscheme molokai
+"colorscheme meta5
+"colorscheme angr
+colorscheme apprentice
+"colorscheme spacecamp_lite
+"colorscheme abstract
+
+" -----------------------------------------------------------config for ctags
+"set tags=$HOME/.vim/tags/tags
+set tags=./tags;/,tags;/
+
+"--------------------------------------------------------------config for ycm
+let g:ycm_clangd_binary_path = "/home/navdeep/Downloads/clangd/clangd-linux-10.0.0/clangd_10.0.0/bin"
+let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+let g:ycm_max_diagnostics_to_display = 0 
+let g:ycm_complete_in_comments = 1
+let g:ycm_complete_in_strings = 1
+"TO DISABLE YCM
+"let g:loaded_youcompleteme = 1
+
+"--------------------------------------------------------To detect cuda files
+autocmd BufNewFile,BufRead *.cu set filetype=cpp
+autocmd FileType cuda set ft=c
+
+"-------------------------------------------------------config for indentLine
+let g:indentLine_color_term = 240
+let g:indentLine_char = '┆'
+
+"---------------------------------------------------------config for nerdtree
+autocmd vimenter * NERDTree
+autocmd VimEnter * wincmd p
+"Close VIM if nerdtree is the only window left open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+"---------------------------------------------------------config for easytags
+"let g:easytags_async = 1	    " update ctags asynchronusly 
+
+"----------------------------------------------config for c++ syntax coloring
+let g:cpp_experimental_template_highlight = 1
+let g:cpp_concepts_highlight = 1
+let g:cpp_posix_standard = 1
+let g:cpp_class_decl_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_scope_highlight = 1
+let g:cpp_no_function_highlight = 1
+
+"-------------------------------------------------------config for auto-pairs
+let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`'}
+
+" General
+set mouse=a
+set path+=**		" Append to path for fuzzy finding
+set wildmenu		" Wildmenu for fuzzy finding
+set number		" Show line numbers
+set linebreak		" Break lines at word (requires Wrap lines)
+"set textwidth=80	" Line wrap (number of cols)
+set showmatch		" Highlight matching brace
+
+set hlsearch		" Highlight all search results
+set ignorecase		" Always case-insensitive
+set incsearch		" Searches for strings incrementally
+
+set autochdir		" Change working directory to open buffer
+set autoindent		" Auto-indent new lines
+set cindent		" Use 'C' style program indenting
+set shiftwidth=2	" Number of auto-indent spaces
+set smartindent		" Enable smart-indent
+set smarttab		" Enable smart-tabs
+set softtabstop=2	" Number of spaces per Tab
+set updatetime=50	" Update early for gitGutter
+set shortmess-=S
+set showcmd
+set foldmethod=indent   
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
+
+" <Ctrl-l> redraws the screen and removes any search highlighting.
+nnoremap <silent> <C-l> :nohl<CR><C-l>
+
+" For selecting text between blocks in visual mode.
+noremap % v%
+
+" for copying and pasting
+noremap <Leader>y "*y
+noremap <Leader>p "*p
+noremap <Leader>Y "+y
+noremap <Leader>P "+p
+
+" disablem middle mouse paste
+map <MiddleMouse> <Nop>
+imap <MiddleMouse> <Nop>
+
+" Advanced
+set ruler			" Show row and column ruler information
+set backspace=indent,eol,start	" Backspace behaviour
+
