@@ -1,28 +1,59 @@
 set nocompatible
-execute pathogen#infect()
 syntax on
 filetype plugin indent on	       "Filetype detection and indent enabled
 
-" -------------------------------------------------------All fav colorschemes
-"set background=dark
-"colorscheme one
-"colorscheme PaperColor
-"colorscheme molokai
-"colorscheme meta5
-"colorscheme angr
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'rafi/awesome-vim-colorschemes'
+
+Plugin 'Yggdroot/indentLine'
+
+Plugin 'preservim/nerdtree'
+
+Plugin 'octol/vim-cpp-enhanced-highlight'
+
+Plugin 'jiangmiao/auto-pairs'
+
+Plugin 'vim-airline/vim-airline'
+
+Plugin 'vim-airline/vim-airline-themes'
+
+Plugin 'airblade/vim-gitgutter'
+
+Plugin 'ycm-core/YouCompleteMe'
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
 colorscheme apprentice
-"colorscheme spacecamp_lite
-"colorscheme abstract
 
 " -----------------------------------------------------------config for ctags
 set tags=$HOME/.vim/tags/tags
 
 "--------------------------------------------------------------config for ycm
-let g:ycm_clangd_binary_path = "/home/navdeep/Downloads/clangd/clangd-linux-10.0.0/clangd_10.0.0/bin"
+let g:ycm_clangd_binary_path = "/usr/bin/clangd-11"
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
-let g:ycm_max_diagnostics_to_display = 0 
-"TO DISABLE YCM
-"let g:loaded_youcompleteme = 1
+let g:ycm_max_diagnostics_to_display = 0
+""TO DISABLE YCM
+""let g:loaded_youcompleteme = 1
 
 "--------------------------------------------------------To detect cuda files
 autocmd BufNewFile,BufRead *.cu set filetype=cpp
@@ -38,7 +69,7 @@ autocmd VimEnter * wincmd p
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "---------------------------------------------------------config for easytags
-"let g:easytags_async = 1	    " update ctags asynchronusly 
+"let g:easytags_async = 1	    " update ctags asynchronusly
 
 "----------------------------------------------config for c++ syntax coloring
 let g:cpp_experimental_template_highlight = 1
@@ -73,11 +104,11 @@ set softtabstop=2	" Number of spaces per Tab
 set updatetime=100	" Update early for gitGutter
 set shortmess-=S
 set showcmd
-set foldmethod=indent   
+set foldmethod=indent
 set foldnestmax=10
 set nofoldenable
 set foldlevel=2
-
+set mouse=a
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 
